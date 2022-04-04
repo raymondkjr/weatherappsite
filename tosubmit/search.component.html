@@ -1,0 +1,76 @@
+<div class="container" id="search-container-mobile">
+    <div class="row justify-content-center rounded" >
+        <div class="col-4 text-center">
+            <p><b>Weather Search</b> &#9925;</p>
+        </div>
+    </div>
+        <form class="needs-validation" novalidate>
+            <div class="row gy-5">
+                <div class="col-md-4">
+                    <label class="form-label labelReq" for="street-input" >Street</label>
+                </div>
+                <div class="col-md-8">
+
+                    <input type="text" class="form-control" [disabled]="checked" id="street" required minlength="1" [(ngModel)]="formStreet" name="street" #street="ngModel">
+                    <div *ngIf="street.invalid && (street.dirty || street.touched)" class="failed-validation">Please enter a valid street</div>
+                </div>
+                
+            </div>
+            <br>
+            <div class="row gy-5">
+                <div class="col-md-4">
+                    <label class="form-label labelReq" for="city-input">City</label>
+                </div>
+                <div class="col-md-8">
+                   
+                        <input  type="text" class="form-control" [disabled]="checked" id="city-input"  required minlength="1" [(ngModel)]="formCity" name="city" #city="ngModel" (ngModelChange)="updateAutoComplete()">
+                        <div *ngIf="city.invalid && (city.dirty || city.touched)" class="failed-validation">Please enter a valid city</div>
+                   
+                    <!--<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let val of autoCompSearchData" [value]="val">{{val}}</mat-option>
+                    </mat-autocomplete>-->
+                </div>
+                
+            </div>
+            <br>
+            <div class="row gy-5">
+                <div class="col-md-4">
+                    <label class="form-label labelReq" for="state-input">State</label>
+                </div>
+                <div class="col-md-8">
+                    <select  class="form-control" [disabled]="checked" id="state-input" placeholder="Select your state" required [(ngModel)]="formState" name="state">
+                        <option disabled selected>Select your state...</option>
+                        <option *ngFor="let state of stateAbbr; let i = index" [value]="stateAbbr[i]">{{stateNames[i]}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <div class="form-check">
+            <div class="row">
+                <div class="col-md-4 labelReq">
+                    Auto-detect location
+                </div>
+                <div class="col-md-4">
+                    <input type="checkbox" class="form-check-input" id="city-input" value="" (click)="changeChecked()">
+                    <label class="form-label" for="autodetect-input">Current Location</label>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit" [disabled]="(street.invalid || city.invalid) && !checked" (click)="submitForm()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Search</button>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-light" type="reset" (click)="resetForm()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-nested" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"/>
+</svg> Clear</button>
+                </div>
+                
+            </div>
+            <br>
+           
+        </form>
+</div>

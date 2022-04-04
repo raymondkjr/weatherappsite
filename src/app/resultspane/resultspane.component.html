@@ -1,0 +1,21 @@
+    <div class="container">
+        <div class="row justify-content-center">
+            <ul ngbNav [(activeId)]="active" (navChange)="onNavChange($event)" class="nav-pills">
+                <li [ngbNavItem]="1">
+                    <a ngbNavLink (click)="navResults()">Results</a>
+                </li>
+                <li [ngbNavItem]="2">
+                    <a ngbNavLink (click)="showFavorites()">Favorites</a>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            
+                    <app-forecastpane style="width:100%" [hidden]="!this.results || this.errorLoad" [weatherData]="searchResults"></app-forecastpane>
+                    <div class="alert alert-danger" *ngIf="this.errorLoad" style="width:100%">An error occurred please try again later</div>
+        </div>
+        <div class="row justify-content-center">
+            <app-favorites (favSearchEvent)="loadFromFav($event)" style="width:100%" [hidden]="this.results || !this.favorites"></app-favorites>
+        </div>
+    </div>

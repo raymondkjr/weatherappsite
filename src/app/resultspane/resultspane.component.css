@@ -1,0 +1,12 @@
+.container {
+      width:100%;  
+}
+
+@media screen and (min-width: 720px) {
+    .container {
+        width:1000px;
+    }
+}
+
+
+

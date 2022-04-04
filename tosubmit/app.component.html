@@ -1,0 +1,4 @@
+<app-search (messageEvent)="getLoc($event)" (clearEvent)="clearForm($event)"></app-search>
+<br>
+<app-resultspane [searchResults]="loc" [results]="found"></app-resultspane>
+<router-outlet></router-outlet>

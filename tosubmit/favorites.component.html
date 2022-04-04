@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="alert alert-warning" *ngIf="!hasFavorites"><b>Sorry!</b> No records found.</div>
+    <div *ngIf="hasFavorites" class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr scope="row" *ngFor="let val of favArray; index as i" class="align-items-center">
+                    <th>{{i+1}}</th>
+                    <td class="align-items-center"><a class="link" (click)="favClick(i)">{{val.favCity}}</a></td>
+                    <td><a class="link" (click)="favClick(i)">{{val.favState}}</a></td>
+                    <td>
+                        <button class="btn btn-link" (click)="deleteFav(i)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill"  color="black" viewBox="0 0 16 16">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

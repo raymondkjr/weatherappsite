@@ -1,0 +1,25 @@
+.container {
+        background-color: #e3e3e3;
+}
+
+@media screen and (min-width: 720px){
+    .container {
+        width: 1000px;
+    }
+}
+
+
+
+
+p {
+    font-size: 15pt;
+}
+
+.failed-validation {
+    color: #dc3545;
+}
+
+.labelReq:after {
+    content:"*";
+    color:red;
+}

@@ -1,0 +1,12 @@
+@media screen and (min-width: 720px){
+    .container {
+        width: 1000px;
+    }
+    
+    
+}
+
+a.link {
+    text-decoration: underline;
+    color: blue;
+}
